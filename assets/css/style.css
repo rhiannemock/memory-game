@@ -26,9 +26,11 @@ div.container{
 
 h1{
     font-size: 5rem;
+    margin-bottom:100px;
 }
 p{
     font-size: 1.5rem;
+    margin-bottom:100px;
 }
 img {
     max-width: 100%;
@@ -40,9 +42,8 @@ img {
 /*play game page*/
 .periodic-table {
   display: grid;
-  /* 18 columns for the standard periodic table layout */
   grid-template-columns: repeat(18, 50px);
-  grid-template-rows: repeat(7, 60px);
+  grid-template-rows: repeat(9, 60px);
   gap: 10px;
 }
 
@@ -50,7 +51,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 20, 147, 0.05); /* Very faint pink tint */
+  background: rgba(255, 20, 147, 0.05); 
   color: white;
   font-weight: bold;
   
