@@ -79,6 +79,7 @@ img {
   background: rgba(255, 20, 147, 0.05); 
   color: white;
   font-weight: bold;
+
   
   /* The Neon Border */
   border: 2px solid #ff1493; 
@@ -93,4 +94,23 @@ img {
   background: rgba(255, 20, 147, 0.2);
   box-shadow: 0 0 15px #ff1493, inset 0 0 10px #ff1493;
   transform: scale(1.05);
+}
+
+.element.hidden {
+    color: transparent !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 2px dashed #444 !important;
+    box-shadow: none !important;
+}
+
+.element.correct {
+    background: rgba(0, 255, 127, 0.2) !important;
+    border-color: #00ff7f !important;
+    box-shadow: 0 0 15px #00ff7f, inset 0 0 10px #00ff7f !important;
+    color: #ffffff !important;
+}
+
+.element.wrong {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 15px #ff4444, inset 0 0 5px #ff4444 !important;
 }
