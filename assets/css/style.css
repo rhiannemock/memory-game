@@ -70,7 +70,6 @@ img {
   grid-template-columns: repeat(18, 35px);
   grid-template-rows: repeat(9, 45px);
   gap: 5px;
-  
 }
 
 .element {
@@ -98,12 +97,31 @@ img {
 
 .card-grid {
     display: grid;
+    /* This tells the cards to be at least 100px wide, but grow to fill the space */
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    /* Limits the height of rows so cards stay square-ish */
+    grid-auto-rows: 120px; 
     gap: 15px;
     padding: 20px;
-    max-width: 900px;
+    width: 100%;
+    max-width: 1000px; 
     margin: 0 auto;
 }
+
+/* Adjustments for smaller screens (Mobile) */
+@media (max-width: 600px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        grid-auto-rows: 100px;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .game-h1 {
+        font-size: 2.5rem; /* Shrink title so it doesn't overflow */
+    }
+}
+
 
 .element-card {
     aspect-ratio: 1 / 1;
