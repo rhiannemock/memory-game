@@ -26,14 +26,16 @@ div.game-container{
 
 .main-h1{
     font-size: 4rem;
-    margin-bottom:100px;
+    margin-top:100px;
     text-align:center;
+    color:#8eee52;
     
 }
-main-p{
+.main-p{
     font-size: 1.5rem;
     margin-bottom:100px;
     text-align:center;
+    color:#d52feb;
 }
 img {
     max-width: 100%;
@@ -49,6 +51,7 @@ img {
     margin-bottom:50px;
     text-align:left;
     margin-left:30px;
+    color:#a839cd;
     
 }
 .game-p{
@@ -120,6 +123,52 @@ img {
     .game-h1 {
         font-size: 2.5rem; /* Shrink title so it doesn't overflow */
     }
+    /* Responsive Grid Fix */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    /* Allow rows to grow when content is revealed */
+    grid-auto-rows: min-content; 
+    gap: 15px;
+    padding: 20px;
+}
+
+.element-card {
+    padding: 10px;
+    min-height: 120px; /* Base height */
+    position: relative;
+    overflow: hidden; /* Keeps things tidy */
+}
+
+/* Mobile Overrides */
+@media (max-width: 600px) {
+    .card-grid {
+        /* Smaller cards for smaller screens */
+        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+        gap: 8px;
+        padding: 5px;
+    }
+
+    .element-card {
+        min-height: 100px;
+        padding: 5px;
+    }
+
+    /* Shrink the text so it fits the smaller cards for smaller screens*/
+    .symbol {
+        font-size: 1rem !important;
+    }
+
+    .el-name { font-size: 0.55rem; }
+    .el-mass { font-size: 0.55rem; }
+    .el-cat { font-size: 0.30rem; } 
+    
+    .atomic-num-top {
+        font-size: 0.4rem;
+        top: 2px;
+        left: 4px;
+    }
+}
 }
 
 
@@ -209,7 +258,7 @@ img {
     letter-spacing: 1px;
 }
 
-/* Optional: Color cards by category when correct */
+/* Color cards by category when correct */
 .element-card.noble-gas.correct { border-color: #ff00ff; box-shadow: 0 0 15px #ff00ff; }
 .element-card.alkali-metal.correct { border-color: #ffa500; box-shadow: 0 0 15px #ffa500; }
 .element-card.lanthanide.correct { border-color: #a839cd; box-shadow: 0 0 15px #a839cd; }
