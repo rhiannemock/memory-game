@@ -115,87 +115,117 @@ const periodicTable = [
     { symbol:"Ts", name:"Tennessine",atomicNumber :117 ,atomicMass :294 ,category :"halogen"},
     { symbol:"Og", name:"Oganesson",atomicNumber :118 ,atomicMass :294 ,category :"noble gas"}
 ];
-
-// Ensure your periodicTable array is at the top of this file
-
-
-
-let elementsToFind = [];
-let currentTarget = null;
+let currentLevel = 1;
 let score = 0;
+let elementsInPlay = [];
+let results = []; // Tracks { name, status }
+let targetElement = null;
+let questionQueue = [];
 
-const startBtn = document.getElementById('start');
-const scoreDisplay = document.getElementById('score');
-const allElementDivs = document.querySelectorAll('.element');
+const levels = { 1: 6, 2: 10, 3: 15 };
 
+const grid = document.getElementById('card-grid');
+const startBtn = document.getElementById('start-btn');
+const gameUi = document.getElementById('game-ui');
+const targetDisplay = document.getElementById('target-name');
+const summaryScreen = document.getElementById('summary-screen');
+const summaryContent = document.getElementById('summary-content');
 
-function syncTable() {
-    allElementDivs.forEach(div => {
-        const symbol = div.innerText.trim();
-        const elementData = periodicTable.find(e => e.symbol === symbol);
-        if (elementData) {
-            div.setAttribute('data-symbol', symbol);
-        }
-    });
-}
-
-function startGame() {
-    score = 0;
-    updateScoreDisplay();
-    // Clear previous game states
-    allElementDivs.forEach(div => div.classList.remove('hidden', 'correct', 'wrong'));
-
-    // Select 20 random elements
+function initLevel() {
+    grid.innerHTML = '';
+    summaryScreen.style.display = 'none';
+    grid.style.display = 'grid';
+    results = [];
+    
+    // Pick random elements for this level
     const shuffled = [...periodicTable].sort(() => 0.5 - Math.random());
-    elementsToFind = shuffled.slice(0, 20);
+    elementsInPlay = shuffled.slice(0, levels[currentLevel]);
+    
+    // Create a queue of questions for this level
+    questionQueue = [...elementsInPlay].sort(() => 0.5 - Math.random());
 
-    // Hide the 20 elements in the grid
-    elementsToFind.forEach(el => {
-        const div = document.querySelector(`.element[data-symbol="${el.symbol}"]`);
-        if (div) div.classList.add('hidden');
+    elementsInPlay.forEach(el => {
+        const card = document.createElement('div');
+        card.className = 'element-card';
+        card.id = `card-${el.symbol}`;
+        card.innerHTML = `<div class="symbol">${el.symbol}</div>
+                          <div class="details">${el.atomicNumber}<br>${el.atomicMass}</div>`;
+        card.addEventListener('click', () => handleGuess(el, card));
+        grid.appendChild(card);
     });
 
-    nextTurn();
+    nextQuestion();
 }
 
-function nextTurn() {
-    if (elementsToFind.length === 0) {
-        startBtn.innerText = "🏆 WINNER! Restart?";
-        currentTarget = null;
+function nextQuestion() {
+    if (questionQueue.length === 0) {
+        showSummary();
         return;
     }
-    // Choose one of the remaining hidden elements as the current target
-    const randomIndex = Math.floor(Math.random() * elementsToFind.length);
-    currentTarget = elementsToFind[randomIndex];
-    startBtn.innerText = `PLACE: ${currentTarget.name}`;
+    targetElement = questionQueue.shift();
+    targetDisplay.innerText = `Find: ${targetElement.name}`;
 }
 
-allElementDivs.forEach(div => {
-    div.addEventListener('click', () => {
-        if (!currentTarget) return;
+function handleGuess(el, card) {
+    if (!targetElement || card.classList.contains('correct')) return;
 
-        const clickedSymbol = div.getAttribute('data-symbol');
+    if (el.symbol === targetElement.symbol) {
+        card.classList.add('correct');
+        score += 10;
+        results.push({ name: targetElement.name, status: 'known' });
+        document.getElementById('score').innerText = `Score: ${score}`;
+        nextQuestion();
+    } else {
+        card.classList.add('wrong');
+        results.push({ name: targetElement.name, status: 'missed' });
+        
+        // Auto-skip after red flash
+        const currentTarget = targetElement;
+        targetElement = null; 
+        setTimeout(() => {
+            card.classList.remove('wrong');
+            nextQuestion();
+        }, 600);
+    }
+}
 
-        if (clickedSymbol === currentTarget.symbol && div.classList.contains('hidden')) {
-            // Correct guess
-            div.classList.remove('hidden');
-            div.classList.add('correct');
-            elementsToFind = elementsToFind.filter(el => el.symbol !== clickedSymbol);
-            score += 10;
-            updateScoreDisplay();
-            nextTurn();
-        } else if (div.classList.contains('hidden')) {
-            // Wrong guess feedback
-            div.classList.add('wrong');
-            setTimeout(() => div.classList.remove('wrong'), 500);
-        }
-    });
+function showSummary() {
+    grid.style.display = 'none';
+    summaryScreen.style.display = 'block';
+    targetDisplay.innerText = "Level Complete!";
+    
+    summaryContent.innerHTML = results.map(res => `
+        <div class="summary-item ${res.status}">
+            <span>${res.name}</span>
+            <span>${res.status.toUpperCase()}</span>
+        </div>
+    `).join('');
+
+    const continueBtn = document.getElementById('continue-btn');
+    if (currentLevel >= 3) {
+        continueBtn.innerText = "Play Again from Start";
+        continueBtn.onclick = resetGame;
+    } else {
+        continueBtn.innerText = "Proceed to Next Level";
+        continueBtn.onclick = () => { currentLevel++; initLevel(); };
+    }
+}
+
+function resetGame() {
+    currentLevel = 1;
+    score = 0;
+    document.getElementById('score').innerText = "Score: 0";
+    summaryScreen.style.display = 'none';
+    gameUi.style.display = 'none';
+    startBtn.style.display = 'inline-block';
+    grid.innerHTML = '';
+}
+
+startBtn.addEventListener('click', () => {
+    startBtn.style.display = 'none';
+    gameUi.style.display = 'block';
+    initLevel();
 });
 
-function updateScoreDisplay() {
-    scoreDisplay.innerText = `Score: ${score}`;
-}
+document.getElementById('reset-btn').addEventListener('click', resetGame);
 
-// Prepare the data-attributes as soon as the script loads
-syncTable();
-startBtn.addEventListener('click', startGame);
