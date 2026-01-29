@@ -131,25 +131,34 @@ const targetDisplay = document.getElementById('target-name');
 const summaryScreen = document.getElementById('summary-screen');
 const summaryContent = document.getElementById('summary-content');
 
-function initLevel() {
+
+    function initLevel() {
     grid.innerHTML = '';
     summaryScreen.style.display = 'none';
     grid.style.display = 'grid';
     results = [];
     
-    // Pick random elements for this level
     const shuffled = [...periodicTable].sort(() => 0.5 - Math.random());
     elementsInPlay = shuffled.slice(0, levels[currentLevel]);
-    
-    // Create a queue of questions for this level
     questionQueue = [...elementsInPlay].sort(() => 0.5 - Math.random());
 
     elementsInPlay.forEach(el => {
         const card = document.createElement('div');
-        card.className = 'element-card';
+        // We add the category as a class (replacing spaces with dashes)
+        const categoryClass = el.category.replace(/\s+/g, '-');
+        card.className = `element-card ${categoryClass}`;
         card.id = `card-${el.symbol}`;
-        card.innerHTML = `<div class="symbol">${el.symbol}</div>
-                          <div class="details">${el.atomicNumber}<br>${el.atomicMass}</div>`;
+        
+        // Build the card with all data, but hidden via CSS
+        card.innerHTML = `
+            <div class="atomic-num-top">${el.atomicNumber}</div>
+            <div class="symbol">${el.symbol}</div>
+            <div class="details">
+                <div class="el-name">${el.name}</div>
+                <div class="el-mass">${el.atomicMass}</div>
+                <div class="el-cat">${el.category}</div>
+            </div>`;
+            
         card.addEventListener('click', () => handleGuess(el, card));
         grid.appendChild(card);
     });

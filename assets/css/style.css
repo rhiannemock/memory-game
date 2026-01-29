@@ -181,3 +181,42 @@ img {
     margin-top: 10px;
     font-family: 'Roboto Mono', monospace;
 }
+/* Hide details and atomic number by default */
+.details, .atomic-num-top {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Reveal when the 'correct' class is added */
+.element-card.correct .details,
+.element-card.correct .atomic-num-top {
+    opacity: 1;
+}
+
+.atomic-num-top {
+    font-size: 0.7rem;
+    position: absolute;
+    top: 5px;
+    left: 8px;
+}
+
+.el-name { font-weight: bold; margin-top: 5px; }
+.el-mass { font-size: 0.75rem; color: #ccc; }
+.el-cat { 
+    font-size: 0.6rem; 
+    text-transform: uppercase; 
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+/* Optional: Color cards by category when correct */
+.element-card.noble-gas.correct { border-color: #ff00ff; box-shadow: 0 0 15px #ff00ff; }
+.element-card.alkali-metal.correct { border-color: #ffa500; box-shadow: 0 0 15px #ffa500; }
+.element-card.lanthanide.correct { border-color: #a839cd; box-shadow: 0 0 15px #a839cd; }
+.element-card.nonmetal.correct { border-color: #00ffff; box-shadow: 0 0 15px #00ffff; }
+.element-card.alkaline-earth-metal.correct { border-color: #ffff00; box-shadow: 0 0 15px #ffff00; }
+.element-card.transition-metal.correct { border-color: #f55232; box-shadow: 0 0 15px #f55232; }
+.element-card.post-transition-metal.correct { border-color: #00ff00; box-shadow: 0 0 15px #00ff00; }
+.element-card.metalloid.correct { border-color: #ffe32f; box-shadow: 0 0 15px #ffe32f; }
+.element-card.halogen.correct { border-color: #d52feb; box-shadow: 0 0 15px #d52feb; }
+.element-card.actinide.correct { border-color: #2525fb; box-shadow: 0 0 15px #2525fb; }
