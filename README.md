@@ -83,3 +83,15 @@ results as below:
 
 2, wave testing
    p color changed from purple to pale blue, purple provided low contrast.
+
+3, w3c testing
+a closing tag and an aria label issue.
+h2 tag empty because it is filled with javascript
+![responsiveness testing 1](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c1.png)
+![responsiveness testing 2](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c2.png)
+![responsiveness testing 3](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c3.png)
+![responsiveness testing 4](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c4.png)
+![responsiveness testing 5](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c5.png)
+![responsiveness testing 6](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c6.png)
+
+jigsaw testing
