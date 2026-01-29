@@ -52,7 +52,7 @@ GitHub will now start building your site.
 
 Wait for a minute minute. Refresh the Page.
 
-A banner will appear at the top with your live URL (e.g., https://username.github.io/my-keto-site/). Your site is live!
+A banner will appear at the top with your live URL (e.g., https://username.github.io/my-site/). Your site is live!
 
 # TESTING
 I have a list of ways of testing below that i will be using, these will be completed, changes made and final testing done once all changes have been made.
@@ -62,9 +62,9 @@ I have a list of ways of testing below that i will be using, these will be compl
 1. responsiveness testing
 2. wave testing
 3. HTML and CSS testing using w3c and jigsaw
-4. link testing page by page including images opening in a new window
+4. link testing page by page
 5. JS lint testing
-6. user story compatibility
+
    
    Once these tests are complete i will have a list of errors which will be worked on before the final testing phase.
 
@@ -96,3 +96,8 @@ h2 tag empty because it is filled with javascript
 
 jigsaw testing
 ![jigsaw testing 1](https://rhiannemock.github.io/memory-game/assets/testing/jigsaw/jigsaw.png)
+
+js validator
+![js validator](https://rhiannemock.github.io/memory-game/assets/testing/js-validator/js-validator.png)
+
+overall it was an interesting project but i think i would have chosen something different if doing it again, the key is to think about what and how it will work to make it the best it can be.
