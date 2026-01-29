@@ -87,11 +87,12 @@ results as below:
 3, w3c testing
 a closing tag and an aria label issue.
 h2 tag empty because it is filled with javascript
-![responsiveness testing 1](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c1.png)
-![responsiveness testing 2](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c2.png)
-![responsiveness testing 3](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c3.png)
-![responsiveness testing 4](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c4.png)
-![responsiveness testing 5](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c5.png)
-![responsiveness testing 6](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c6.png)
+![w3c testing 1](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c1.png)
+![w3c testing 2](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c2.png)
+![w3c testing 3](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c3.png)
+![w3c testing 4](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c4.png)
+![w3c testing 5](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c5.png)
+![w3c testing 6](https://rhiannemock.github.io/memory-game/assets/testing/w3c/w3c6.png)
 
 jigsaw testing
+![jigsaw testing 1](https://rhiannemock.github.io/memory-game/assets/testing/jigsaw/jigsaw.png)
