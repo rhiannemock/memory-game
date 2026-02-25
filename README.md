@@ -1,6 +1,6 @@
-#The memory game for the periodic table and elements.
+# The memory game for the periodic table and elements.
 
-#User story
+# User story
 
 This would be used to help students learn the elements and match them to their chemical symbol in the periodic table.
 
@@ -18,7 +18,7 @@ rules page explaining how to use the game and how it works.
 
 game page where you will play the game.
 
-#Acknowledgements
+# Acknowledgements
 
 [periodic table image](https://www.curiousminds.co.uk/blogs/curious-mind-blog/what-is-the-periodic-table-of-chemical-elements)
 
@@ -68,7 +68,7 @@ I have a list of ways of testing below that i will be using, these will be compl
    
    Once these tests are complete i will have a list of errors which will be worked on before the final testing phase.
 
-1,I completed responsiveness testing before and during gameplay, the first test showed my cards overlapped when revealing the correct card details, altered the font size for mobile screen.
+1, I completed responsiveness testing before and during gameplay, the first test showed my cards overlapped when revealing the correct card details, altered the font size for mobile screen.
 results as below:
 ![responsiveness testing 1](https://rhiannemock.github.io/memory-game/assets/testing/responsive/responsive1.png)
 ![responsiveness testing 2](https://rhiannemock.github.io/memory-game/assets/testing/responsive/responsive2.png)
